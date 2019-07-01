@@ -20,16 +20,16 @@ class Main(Wox):
 
   #必须有一个query方法，用户执行查询的时候会自动调用query方法
   def query(self,key):
-    r = self.request('https://news.ycombinator.com/')
+    r = self.request('https://movie.douban.com/subject_search?',params={'search_text':key,'cat':'1002'})
     bs = BeautifulSoup(r.text)
     results = []
-    for i in bs.select(".comhead"):
-      title = i.previous_sibling.text
-      url = i.previous_sibling["href"]
+    for i in range(2):
+      title = "1"
+      url = "2"
       results.append({
         "Title": title ,
         "SubTitle":title,
-        "IcoPath":"Images/app.ico",
+        "IcoPath":"img\\fun.jpg",
         "JsonRPCAction":{
           #这里除了自已定义的方法，还可以调用Wox的API。调用格式如下：Wox.xxxx方法名
           #方法名字可以从这里查阅https://github.com/qianlifeng/Wox/blob/master/Wox.Plugin/IPublicAPI.cs 直接同名方法即可
